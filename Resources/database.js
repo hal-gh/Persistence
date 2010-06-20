@@ -26,7 +26,7 @@ var b1 = Titanium.UI.createButton({
 	title:'Save',
 	width:'25%',
 	height:35,
-//	right:0,
+	right:0,
 	enabled:false
 });
 controlsView.add(b1);
@@ -34,7 +34,7 @@ controlsView.add(b1);
 var tf1 = Titanium.UI.createTextField({
 	width:'25%',
 	height:35,
-//	left:0,
+	left:0,
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'Enter a note...'
