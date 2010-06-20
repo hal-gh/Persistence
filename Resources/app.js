@@ -55,3 +55,7 @@ tabGroup.addTab(tab3);
 
 // open tab group
 tabGroup.open();
+Ti.API.info('Platform Width: '+Ti.Platform.displayCaps.platformWidth);
+Ti.API.info('Platform Height: '+Ti.Platform.displayCaps.platformHeight);
+Ti.API.info('Platform Density: '+Ti.Platform.displayCaps.density);
+Ti.API.info('Platform dpi: '+Ti.Platform.displayCaps.dpi);

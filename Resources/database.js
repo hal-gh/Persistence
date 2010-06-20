@@ -1,4 +1,5 @@
 var win = Titanium.UI.currentWindow;
+win.layout = 'vertical';
 var currentNote = '';
 var db = Titanium.Database.open('todos');
 db.execute('CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, todo TEXT)');
@@ -6,29 +7,34 @@ db.execute('CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, todo TEXT)
 //create data entry view
 var entryView = Ti.UI.createView({
   backgroundColor:'#0060AA',
-  width:'100%',
-  height:50,
-  top:0
+  width:'auto',
+  height:100,
+  top:5
 });
 
 var controlsView = Ti.UI.createView({
-  width:270,
-  height:'auto'
+  width:'auto',
+  height:50
 });
+
+var controlsViewSub = Ti.UI.createView({
+	  width:'auto',
+	  height:50
+	});
 
 var b1 = Titanium.UI.createButton({
 	title:'Save',
-	width:60,
+	width:'25%',
 	height:35,
-	right:0,
+//	right:0,
 	enabled:false
 });
 controlsView.add(b1);
 
 var tf1 = Titanium.UI.createTextField({
-	width:200,
+	width:'25%',
 	height:35,
-	left:0,
+//	left:0,
 	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
 	autocorrect:false,
 	hintText:'Enter a note...'
@@ -66,9 +72,10 @@ rows.close();
 
 // create table view
 var tableview = Titanium.UI.createTableView({
+	backgroundColor:'#EDECEB',
 	data:data,
 	editable:true,
-	top:50
+	top:200
 });
 
 // create table view event listener
@@ -115,13 +122,20 @@ var cancel = Titanium.UI.createButton({
 	style:Titanium.UI.iPhone.SystemButtonStyle.DONE
 });
 
-edit.addEventListener('click', function() {
-	win.setRightNavButton(cancel);
-	tableview.editing = true;
-});
-cancel.addEventListener('click', function() {
-	win.setRightNavButton(edit);
-	tableview.editing = false;
-});
+if (Ti.Platform.osname == 'iphone') {
+	edit.addEventListener('click', function() {
+		win.setRightNavButton(cancel);
+		tableview.editing = true;
+	});
+	cancel.addEventListener('click', function() {
+		win.setRightNavButton(edit);
+		tableview.editing = false;
+	});
 
-win.setRightNavButton(edit);
+	win.setRightNavButton(edit);	
+}
+
+//if (Ti.Platform.osname == 'android') {
+//	controlsViewSub.add(edit);
+//	controlsViewSub.add(cancel);
+//}
