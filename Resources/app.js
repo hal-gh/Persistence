@@ -35,9 +35,9 @@ var tab2 = Titanium.UI.createTab({
 // SQL database persistence
 //
 var win3 = Titanium.UI.createWindow({  
-  url:'database.js',
-    title:'Database',
-    backgroundColor:'#fff'
+	url:'database.js',
+	title:'Database',
+	backgroundColor:'#fff'
 });
 var tab3 = Titanium.UI.createTab({  
     title:'Database',
