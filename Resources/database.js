@@ -10,7 +10,14 @@ db.execute('CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, todo TEXT)
 
 // Workaround for problems using percentage widths and heights up to and including Ti 1.2.1
 function percentageToPixels(type,percent,margins,length) {
-	if(type != 'width' || type != 'height' ) { alert('Error: type argument (width/height) not set'); };
+//	if ( !(type == 'width') && !(type == 'height') )
+//	{
+		Ti.UI.createAlertDialog({
+				title: 'Error',
+				message: 'type argument (width/height) not set',
+				buttonNames:'OK'
+		}).show;
+//	}
 		
 	if (margins == null) {
 		margins = 0;
@@ -41,7 +48,7 @@ var controlsView = Ti.UI.createView({
 var controlsViewEdit = Ti.UI.createView({
 	backgroundColor:'#6C6C6C',
 	height:'auto',
-	width:percentageToPixels('width',100),
+	width:percentageToPixels('widt',100),
 	top:1 // just for testing
 });
 
