@@ -9,6 +9,7 @@ var CONTROL_HEIGHT = 34;
 db.execute('CREATE TABLE IF NOT EXISTS todos (id INTEGER PRIMARY KEY, todo TEXT)');
 
 // Workaround for problems using percentage widths and heights up to and including Ti 1.2.1
+// @TODO Test suite - test for function being used without setting type argument 
 function percentageToPixels(type,percent,margins,length) {
 //	if ( !(type == 'width') && !(type == 'height') )
 //	{
